@@ -2,8 +2,18 @@ package com.labs;
 
 import java.util.Arrays;
 
+/**
+ * Basic matrix operations
+ */
 public class MatrixOperations {
 
+    /**
+     * Finds cofactor of the matrix
+     * @param matrix matrix
+     * @param n row index
+     * @param m column index
+     * @return cofactor matrix
+     */
     public static double[][] cofactor(double[][] matrix, int n, int m) {
         int N = matrix.length;
         int M = matrix[0].length;
@@ -30,6 +40,11 @@ public class MatrixOperations {
         return newElements;
     }
 
+    /**
+     * Calculates the determinant
+     * @param matrix matrix
+     * @return double - determinant
+     */
     public static double determinant(double[][] matrix){
         if (matrix.length == 2)
             return matrix[0][0] * matrix[1][1] - matrix[0][1] * matrix[1][0];
@@ -50,6 +65,11 @@ public class MatrixOperations {
         return result;
     }
 
+    /**
+     * Inverts the matrix
+     * @param matrix matrix
+     * @return inverted matrix
+     */
     public static double[][] inverseMatrix(double[][] matrix){
         double A = determinant(matrix);
         if(A == 0) return null;
@@ -70,6 +90,11 @@ public class MatrixOperations {
         return newElements;
     }
 
+    /**
+     * Transposes the matrix
+     * @param matrix matrix
+     * @return transposed matrix
+     */
     public static double[][] transpose(double[][] matrix) {
         int n = matrix.length;
         int m = matrix[0].length;
@@ -82,6 +107,12 @@ public class MatrixOperations {
         return newElements;
     }
 
+    /**
+     * Adds 2 matrices
+     * @param a first matrix
+     * @param b second matrix
+     * @return result of the addition
+     */
     public static double[][] add(double[][] a, double[][] b) {
         if (a.length == 0) return b;
         if (b.length == 0) return a;
@@ -98,6 +129,12 @@ public class MatrixOperations {
         return c;
     }
 
+    /**
+     * Adds the identity matrix multiplied by the number.
+     * @param a matrix
+     * @param num number that identity matrix will be multiplied by
+     * @return result of the addition
+     */
     public static double[][] add(double[][] a, double num) {
         if (a.length == 0) return null;
         int n = Math.min(a.length, a[0].length);
@@ -109,6 +146,12 @@ public class MatrixOperations {
         return c;
     }
 
+    /**
+     * Multiplies matrix by number
+     * @param num number
+     * @param a matrix
+     * @return result of the multiplication
+     */
     public static double[][] multiply(double num, double[][] a){
         if (a.length == 0) return null;
         double[][] newA = new double[a.length][a[0].length];
@@ -120,6 +163,12 @@ public class MatrixOperations {
         return  newA;
     }
 
+    /**
+     * Multiplies 2 matrices
+     * @param a first matrix
+     * @param b second matrix
+     * @return null if number of columns in matrix a is not equal to number of rows in matrix b, result of the multiplication otherwise
+     */
     public static double[][] multiply(double[][] a, double[][] b) {
         if (a.length == 0) return null;
         if (b.length == 0) return null;
